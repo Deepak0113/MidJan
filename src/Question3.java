@@ -1,14 +1,38 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Question3 {
-    static boolean isSubsequence(String[] string1, String[] string2){
-        boolean[] check = new boolean[26];
+    static int findSubsequence(String[] words, String[] checks){
+        Set<Character> set = new HashSet<>();
+        for(String check: checks){
+            for(Character c : check.toCharArray()){
+                set.add(c);
+            }
+        }
 
-        return true;
+        int result =0;
+        Set<Character> hs;
+
+        for(String word: words){
+            hs=new HashSet<>(set);
+            for(int i =0;i<word.length()&& hs.size()>0;i++){
+                if(hs.contains(word.charAt(i))){
+                    hs.remove(word.charAt(i));
+                }
+            }
+            if(hs.size()==0){
+                result++;
+            }
+        }
+
+
+        return result;
     }
 
     public static void main(String[] args) {
-        System.out.println(isSubsequence(new String[]{"ceo","alco","caaeio","ceai"}, new String[]{"ec","oc","ceo"}));
+        String[] x = {"ceo","alco","caaeio","ceai","acoeaaco"};
+        String[] y={"ec","oc","ceo"};
+        System.out.println(findSubsequence(x,y));
     }
 }
