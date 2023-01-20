@@ -48,15 +48,10 @@ public class Question1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(validate("(a+b)(a*b)"));
-        System.out.println(validate("(ab)(ab+)"));
-        System.out.println(validate("((a+b)"));
-        System.out.println(validate("()()a+b"));
-        System.out.println(validate("(a)(b)"));
-        System.out.println(validate("((a+b+c)a+b)"));
-        System.out.println(validate("((a++b)"));
-        System.out.println(validate("()"));
-        System.out.println(validate("(a+)"));
-        System.out.println(validate("+a"));
+
+        String[] arr = new String[]{"(a+b)(a*b)","(ab)(ab+)","((a+b)","()()a+b","(a)(b)","((a+b+c)a+b)","((a++b)","()","(a+)","+a","(a+b)c"};
+        for(String testcase: arr) {
+             System.out.println(validate(testcase) ? "valid" : "invalid");
+        }
     }
 }
